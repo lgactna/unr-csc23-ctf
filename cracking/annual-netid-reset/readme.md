@@ -25,12 +25,12 @@ pcregrep "^[0-9]+$" wordlist.txt | shuf -n 1
 echo "nevadaexcellence1874" -n | md5sum | awk '{ print $1 }' > hash.txt
 
 # To make a valid wordlist, we can use a combinator attack. Since the password
-# format is word - word - number, we can start off by making the right side of
+# format is word - word - number!, we can start off by making the right side of
 # the wordlist:
 pcregrep "^[0-9]+$" wordlist.txt > numbers.txt
-hashcat -m 0 -a 1 --stdout hash.txt wordlist.txt numbers.txt > right-side.txt
+hashcat -a 1 --stdout wordlist.txt numbers.txt > right-side.txt
 cat right-side.txt | while read line; do echo ${line}!; done > right-side.txt
 
-# At this point, it's sufficient to actually run hashcat:
+# At this point, it's sufficient to actually run hashcat on both halves:
 hashcat -m 0 -a 1 --stdout hash.txt wordlist.txt right-side.txt
 ```
