@@ -6,7 +6,7 @@ import bitstring
 bits = bitstring.BitStream()
 
 def get_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Creates and verifies .lol files.")
+    parser = argparse.ArgumentParser(description="Creates .tire files.")
     
     # Access as args.input_file
     parser.add_argument(
