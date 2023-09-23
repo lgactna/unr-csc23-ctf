@@ -1,7 +1,5 @@
 # spare-tire
 
-*My friend tells me he's invented a new form of encryption - can you get the original image back?*
-
 Add a single leading zero to the the bits of the input file.
 
 Original image from https://www.amazon.com/Eastern-Jungle-Gym-Heavy-Duty-Adjustable/dp/B007FB69EI.
