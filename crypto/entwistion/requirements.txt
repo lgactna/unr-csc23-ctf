@@ -1,0 +1,4 @@
+z3-solver
+
+# You also need the following script saved as stt.py in this directory:
+# https://github.com/icemonster/symbolic_mersenne_cracker/blob/main/main.py
