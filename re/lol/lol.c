@@ -136,11 +136,11 @@ int main(int argc, char* argv[]){
     uint64_t cur_pos = 0;
     unsigned char reconstructed_md5[MD5_DIGEST_LENGTH];
 
-    // Default to flag.lol for verifying.
-    if (argc == 1){
-        filename = "flag.lol";
-    } else {
+    if (argc == 2){
         filename = argv[1];
+    } else {
+        printf("Usage: %s file.lol\n", argv[0]);
+        exit(1);
     }
 
     // Check for endianness.
