@@ -1,6 +1,6 @@
 # entwistion
 
-*Don't roll your own crypto, they said.*
+*I'm so sure you can't break this, I'll even give you the source code and some plaintext.*
 
 This challenge uses Python's `random` module to "encrypt" an image, taking each byte and using it to XOR two images. The plaintext of the first image is given, as well as the ciphertext of the first image and the second image.
 

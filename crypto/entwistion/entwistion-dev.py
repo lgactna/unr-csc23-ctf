@@ -1,12 +1,10 @@
 """
 This is the "developer's" version of entwistion, with comments attached.
 
-Distribute this file with any comments removed.
+Distribute this file with comments and the seed removed.
 """
 
-import argparse
 import random
-from typing import Any, Optional
 from pathlib import Path
 
 import numpy as np
@@ -17,20 +15,15 @@ INPUT_FILE_2 = Path("flag.png")
 OUTPUT_PATH_1 = Path("corgi.jpg.twist")
 OUTPUT_PATH_2 = Path("flag.png.twist")
 
-SEED = "testing"
+SEED = "{$(R4'c&Mn}V[~QL=zXm(qeW@'D-SXv."
 
 
-def entwist(input_file: Path, seed: Optional[str] = None) -> bytes:
+def entwist(input_file: Path) -> bytes:
     """
     Encrypt a file.
 
-    :param input_file: The path to the file to encrypt.
-    :param seed: If given, the seed used to initialize the randomizer. May be
-        None, with behavior described in the Python documentation for the `random`
-        module.
+    Assumes that `random` has already been initialized appropriately.
     """
-    # If args.seed is None, the current time is used.
-    r = random.seed(seed)
 
     with open(input_file, "rb") as fp:
         # Each "output" of the Mersenne Twister is 32 bits. But to avoid having
@@ -44,6 +37,8 @@ def entwist(input_file: Path, seed: Optional[str] = None) -> bytes:
     # state in full. It's possible to make a guess with less, but we shouldn't
     # need to deal with this. The second file can be whatever; it's just that the
     # user needs to know 624 outputs from `random` as-is.
+    #
+    # REMOVE THIS when distributing the source code.
     if len(pt) < 2496:
         print("Plaintext is shorter than 2,496 bytes")
 
@@ -71,8 +66,12 @@ def entwist(input_file: Path, seed: Optional[str] = None) -> bytes:
 
 
 if __name__ == "__main__":
+    # If seed is None, the current time is used.
+    r = random.seed(SEED)
+
+    # The state *should* be shared between these two.
     with open(OUTPUT_PATH_1, "wb") as fp:
-        fp.write(entwist(INPUT_FILE_1, SEED))
+        fp.write(entwist(INPUT_FILE_1))
 
     with open(OUTPUT_PATH_2, "wb") as fp:
-        fp.write(entwist(INPUT_FILE_2, SEED))
+        fp.write(entwist(INPUT_FILE_2))

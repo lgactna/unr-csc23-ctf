@@ -1,8 +1,12 @@
 # annual-netid-reset
 
-*I'm tired of figuring out new passwords every time, so I've decided to make my passwords from the most random source there is - the UNR homepage!*
+*I'm tired of figuring out new passwords every time, so I've decided to make my passwords from the most random source there is - the UNR homepage! Can you break my password hash?*
 
 *The password is two 4+ letter words followed by a number scraped from the homepage, all lowercase. Oh, and there's an exclamation point at the end.*
+
+The password: `nevadaexcellence1874!`
+The hash to crack: `eb93442c65c5269a4daf74958abacc82` (provide this)
+
 
 This challenge scrapes two words and a number from a target webpage, then tacks on a punctuation mark at random. Users should write a script to scrape the target webpage, and will most likely want to generate a wordlist that can be fed into a high-speed cracker.
 
@@ -22,7 +26,7 @@ shuf -n 2 wordlist.txt | tr -d '\n'
 pcregrep "^[0-9]+$" wordlist.txt | shuf -n 1
 
 # This is what you'll want to provide to competitors
-echo "nevadaexcellence1874" -n | md5sum | awk '{ print $1 }' > hash.txt
+echo "nevadaexcellence1874!" -n | md5sum | awk '{ print $1 }' > hash.txt
 
 # To make a valid wordlist, we can use a combinator attack. Since the password
 # format is word - word - number!, we can start off by making the right side of
